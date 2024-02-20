@@ -23,8 +23,7 @@ def process_image(input_image_path):
     outputs = predictor(image)['instances']
     results = DensePoseResultExtractor()(outputs)
     cmap = cv2.COLORMAP_VIRIDIS
-    arr = cv2.applyColorMap(np.zeros((image.shape[0], image.shape[1]), dtype=np.uint8), cmap)
-    output_image = Visualizer(alpha=1, cmap=cmap).visualize(arr, results)
+    output_image = Visualizer(alpha=1, cmap=cv2.COLORMAP_BONE).visualize(frame, results)
 
     return output_image
 
